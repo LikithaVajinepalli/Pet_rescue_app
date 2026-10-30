@@ -9,19 +9,22 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Tests') {
-            steps {
-                echo 'Run Selenium Tests'
+    
+stage('Run Selenium Tests') {
+    steps {
+        echo 'Run Selenium Tests'
 
-                bat 'python -m pip install -r requirements.txt'
+        bat 'python -m pip install -r requirements.txt'
 
-                bat 'start /B python app.py'
+        bat 'start /B python app.py'
 
-                bat 'timeout /t 5 /nobreak'
+        // Wait for Flask application to start
+        sleep(time: 5, unit: 'SECONDS')
 
-                bat 'python -m pytest -v'
-            }
-        }
+        bat 'python -m pytest -v'
+    }
+}
+
 
         stage('Docker Login') {
             steps {
