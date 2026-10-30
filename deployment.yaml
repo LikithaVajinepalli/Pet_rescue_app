@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: petrescue
-          image: YOUR_DOCKERHUB_USERNAME/pet-rescue-app:new
+          image: likithavajinepalli/pet-rescue-app:new
           ports:
             - containerPort: 5001
